@@ -1,0 +1,10 @@
+#!/bin/sh
+set -eu
+SELF=$(readlink -f -- "$0")
+ROOT=$(dirname "$(dirname "$SELF")")
+if [ -d "$ROOT/src/clipd" ]; then
+  export PYTHONPATH="$ROOT/src${PYTHONPATH:+:$PYTHONPATH}"
+elif [ -d "/usr/lib/clipd/clipd" ]; then
+  export PYTHONPATH="/usr/lib/clipd${PYTHONPATH:+:$PYTHONPATH}"
+fi
+exec python3 -m clipd "$@"

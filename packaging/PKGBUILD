@@ -1,0 +1,43 @@
+# Maintainer: clipd contributors
+pkgname=clipd
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Context-aware clipboard manager for Hyprland"
+arch=('any')
+url="https://github.com/ash/clipd"
+license=('MIT')
+depends=('python' 'python-gobject' 'wl-clipboard')
+optdepends=(
+  'gtk4: GTK4 popup'
+  'gtk4-layer-shell: layer-shell popup on Hyprland'
+  'rofi: rich fallback frontend'
+  'fuzzel: minimal fallback frontend'
+  'git: clone repository action'
+  'wtype: fallback auto-paste'
+  'shellcheck: lint shell command action'
+)
+source=()
+sha256sums=()
+
+# Local package: run makepkg from the repository root:
+#   cd packaging && makepkg -si
+# Build artifacts are taken from $startdir/..
+package() {
+  local root="$startdir/.."
+  install -d "$pkgdir/usr/bin" "$pkgdir/usr/lib/clipd" \
+            "$pkgdir/usr/lib/systemd/user" "$pkgdir/usr/share/clipd/hypr"
+  install -Dm755 "$root/bin/clipd" "$pkgdir/usr/bin/clipd"
+  cp -a "$root/src/clipd" "$pkgdir/usr/lib/clipd/"
+  find "$pkgdir/usr/lib/clipd" -type d -name __pycache__ -prune -exec rm -rf {} +
+  install -Dm644 "$root/data/clipd.service" "$pkgdir/usr/lib/systemd/user/clipd.service"
+  install -Dm644 "$root/data/config.toml" "$pkgdir/usr/share/clipd/config.toml"
+  install -Dm644 "$root/data/clipd.rasi" "$pkgdir/usr/share/clipd/clipd.rasi"
+  install -Dm644 "$root/data/clipd.rasi" "$pkgdir/usr/lib/clipd/clipd/data/clipd.rasi"
+  install -Dm644 "$root/hypr/clipd.lua" "$pkgdir/usr/share/clipd/hypr/clipd.lua"
+  install -Dm644 "$root/hypr/clipd.conf" "$pkgdir/usr/share/clipd/hypr/clipd.conf"
+  install -Dm644 "$root/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+check() {
+  PYTHONPATH="$startdir/../src" python -m unittest discover -s "$startdir/../tests" -q
+}

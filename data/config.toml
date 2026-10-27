@@ -1,0 +1,37 @@
+# clipd configuration
+# Reload with: clipd reload
+
+[general]
+max_entries = 50
+max_entry_bytes = 1048576      # larger text copies are skipped
+max_image_bytes = 8388608      # larger images are skipped
+auto_paste = "off"             # off | hyprland | wtype
+paste_delay_ms = 160
+terminal = "foot"
+
+[ui]
+frontend = "auto"              # auto | gtk | rofi | fuzzel | none
+width = 875
+height = 552
+primary_action = "copy"        # copy | context
+show_preview = true
+
+[privacy]
+# Python regular expressions; matching entries are never stored.
+exclude_patterns = []
+exclude_mime = [
+  "x-kde-passwordManagerHint",
+  "application/x-kde-passwordManagerHint",
+]
+pause_on_lock = true
+ignore_whitespace = true
+
+[actions]
+enabled = ["copy", "open", "clone", "save", "format", "lint"]
+clone_dir = "~/src"
+snippet_dir = "~/Snippets"
+confirm_writes = true
+network = true
+
+[watch]
+read_timeout_ms = 4000

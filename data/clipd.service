@@ -1,0 +1,15 @@
+[Unit]
+Description=clipd context-aware clipboard manager
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/clipd daemon
+Restart=on-failure
+RestartSec=2
+TimeoutStopSec=5
+Environment=GDK_BACKEND=wayland
+
+[Install]
+WantedBy=graphical-session.target

@@ -1,0 +1,79 @@
+/* clipd rofi fallback theme: Tokyo Night ink and lavender. */
+* {
+    font: "Adwaita Sans 12";
+    background-color: #16161e;
+    text-color: #c0caf5;
+    border-color: #2f334d;
+    selected-normal-background: #24283b;
+    selected-normal-foreground: #ffffff;
+    normal-background: transparent;
+    normal-foreground: #a9b1d6;
+    alternate-normal-background: transparent;
+    alternate-normal-foreground: #a9b1d6;
+}
+
+window {
+    width: 875px;
+    border: 1px;
+    border-radius: 0;
+    padding: 11px;
+    background-color: #16161e;
+}
+
+mainbox {
+    spacing: 8px;
+    padding: 2px;
+}
+
+inputbar {
+    padding: 5px 9px;
+    spacing: 8px;
+    background-color: #1a1b26;
+    border: 1px;
+    border-color: #2f334d;
+    border-radius: 0;
+}
+
+prompt {
+    text-color: #bb9af7;
+    font: "Adwaita Sans Bold 11";
+}
+
+entry {
+    placeholder: "Search clipboard";
+    placeholder-color: #565f89;
+    text-color: #c0caf5;
+    cursor-color: #bb9af7;
+}
+
+listview {
+    lines: 12;
+    scrollbar: false;
+    border: 0;
+    spacing: 2px;
+    padding: 2px 0;
+}
+
+element {
+    padding: 7px 10px;
+    border-radius: 0;
+    spacing: 9px;
+}
+
+element selected {
+    background-color: #24283b;
+    text-color: #ffffff;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: #a9b1d6;
+}
+
+element-icon {
+    size: 18px;
+}
+
+element-text {
+    vertical-align: 0.5;
+}
