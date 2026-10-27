@@ -13,6 +13,10 @@ and no network calls. GTK 4, rofi and fuzzel frontends are supported from one sh
 
 ![clipd popup](docs/screenshot.png)
 
+Image previews and clipboard history:
+
+![clipd image preview](docs/clipd-image-preview.png)
+
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
 │ ● CLIPD │  Search clipboard…                              4/50       │
